@@ -68,6 +68,6 @@ public class Staff extends Person
     @Override
     public String toString() 
     {
-        return super.toString() + "Staff ID : " + staffID + "\nRole Of Doctor : " + role+ "\nMedical Record : " + medRec + "\nAppointment : " + App;
+        return super.toString() + "Staff ID : " + staffID + "\nRole Of Doctor : " + role + "\nMedical Record : " + medRec + "\nAppointment : " + App;
     }
 }
