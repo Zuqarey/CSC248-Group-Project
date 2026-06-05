@@ -1,15 +1,15 @@
 public class Patient extends Person 
 {
     private String patientID;
-    private MedicalRecord medicalRecord; 
-    private Appointment appointment;    
+    private MedicalRecord medRec; 
+    private Appointment App;    
 
-    public Patient(String nric, String name, String phoneNumber, String patientID, MedicalRecord medicalRecord, Appointment appointment) 
+    public Patient(String nric, String name, String phoneNumber, String patientID, MedicalRecord medRec, Appointment App) 
     {
         super(nric, name, phoneNumber); 
         this.patientID = patientID;
-        this.medicalRecord = medicalRecord;
-        this.appointment = appointment;
+        this.medRec = medRec;
+        this.App = App;
     }
 
 	public void setPatientID(String patientID)
@@ -18,11 +18,11 @@ public class Patient extends Person
 	}
 	public void setMedicalRecord(MedicalRecord medicalRecord)
 	{
-		this.medicalRecord = medicalRecord;
+		this.medRec = medicalRecord;
 	} 
 	public void setAppointment(Appointment appointment)
 	{
-		this.appointment = appointment;
+		this.App = appointment;
 	}
 	
 	//getter
@@ -32,16 +32,16 @@ public class Patient extends Person
     }
     public MedicalRecord getMedicalRecord() 
     { 
-    	return medicalRecord; 
+    	return medRec; 
     }
     public Appointment getAppointment() 
     { 
-    	return appointment; 
+    	return App; 
     }
 
     @Override
     public String toString() 
     {
-        return super.toString() + "Patient ID : " + patientID + medicalRecord.toString() + "\n" + appointment.toString();
+        return super.toString() + "Patient ID : " + patientID + medRec.toString() + "\n" + App.toString();
     }
 }
