@@ -36,6 +36,12 @@ public class MedicalRecord
     { 
     	return careType; 
     }
+
+	public String getDetails()
+	{
+		return details;
+	}
+
     public double getMedicalFee() 
     { 
     	return medicalFee; 
