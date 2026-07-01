@@ -1,3 +1,4 @@
+package src.main.java.com.smartcare;
 import java.util.scanner;
 import java.io.*;
 

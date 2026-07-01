@@ -1,3 +1,4 @@
+package src.main.java.com.smartcare;
 public abstract class Person 
 {
     protected String nric; 

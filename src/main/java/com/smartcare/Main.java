@@ -1,3 +1,6 @@
+package src.main.java.com.smartcare;
+import src.main.java.com.smartcare.io.PatientFileHandler;
+
 public class Main {
     public static void main(String[] args) {
         PatientFileHandler patientFileHandler = new PatientFileHandler("PatientList.txt");

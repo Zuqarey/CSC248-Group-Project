@@ -1,3 +1,4 @@
+package src.main.java.com.smartcare;
 public class Node
 {
         public Object data;
