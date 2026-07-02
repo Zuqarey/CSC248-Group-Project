@@ -62,12 +62,17 @@ public class PatientFileHandler {
             Patient obj = (Patient) patientList.getFirst();
             while (obj != null) {
                 // output for every data in the patient object
-                outputFile.println(obj.getNRIC() + "," + obj.getName() + "," +
-                        obj.getPhoneNumber() + "," + obj.getPatientID() + "," +
-                        obj.getMedicalRecord().getCareType() + "," + obj.getMedicalRecord().getDetails() + "," +
-                        obj.getMedicalRecord().getMedicalFee() + "," + obj.getMedicalRecord().getIsCritical() + "," +
-                        obj.getAppointment().getAppointmentId() + "," + obj.getAppointment().getDate() + "," +
-                        obj.getAppointment().getTime());
+                outputFile.println(obj.getNRIC() + "," + 
+                    obj.getName() + "," +
+                    obj.getPhoneNumber() + "," + 
+                    obj.getPatientID() + "," +
+                    obj.getMedicalRecord().getCareType() + "," + 
+                    obj.getMedicalRecord().getDetails() + "," +
+                    obj.getMedicalRecord().getMedicalFee() + "," + 
+                    obj.getMedicalRecord().getIsCritical() + "," +
+                    obj.getAppointment().getAppointmentId() + "," + 
+                    obj.getAppointment().getDate() + "," +
+                    obj.getAppointment().getTime());
                 obj = (Patient) patientList.getNext();
             }
         } catch (FileNotFoundException e) {
