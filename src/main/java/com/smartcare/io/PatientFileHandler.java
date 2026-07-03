@@ -33,12 +33,11 @@ public class PatientFileHandler {
                 String details = tokens.nextToken();
                 double medicalFee = Double.parseDouble(tokens.nextToken());
                 boolean isCritical = Boolean.parseBoolean(tokens.nextToken());
-                String appointmentId = tokens.nextToken();;
                 String date = tokens.nextToken();; 
                 String time = tokens.nextToken();; 
 
                 MedicalRecord medRec = new MedicalRecord(careType, details, medicalFee, isCritical); 
-                Appointment App = new Appointment(appointmentId, date, time);    
+                Appointment App = new Appointment(date, time);    
                 Patient patient = new Patient(nric, name, phoneNumber, patientID, medRec, App);
 
                 patientLL.insertAtBack(patient);
@@ -71,7 +70,6 @@ public class PatientFileHandler {
                     obj.getMedicalRecord().getDetails() + "," +
                     obj.getMedicalRecord().getMedicalFee() + "," + 
                     obj.getMedicalRecord().getIsCritical() + "," +
-                    obj.getAppointment().getAppointmentId() + "," + 
                     obj.getAppointment().getDate() + "," +
                     obj.getAppointment().getTime());
                 obj = (Patient) patientList.getNext();

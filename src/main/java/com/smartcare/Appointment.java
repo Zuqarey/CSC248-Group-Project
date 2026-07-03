@@ -1,23 +1,16 @@
 package com.smartcare;
 
-public class Appointment 
-{
-    private String appointmentId;
+public class Appointment {
     private String date; 
     private String time; 
 
-    public Appointment(String appointmentId, String date, String time) 
+    public Appointment(String date, String time) 
     {
-        this.appointmentId = appointmentId;
         this.date = date;
         this.time = time;
     }
 
 	//setter
-	public void setAppointmentId(String appointmentId)
-	{
-		this.appointmentId = appointmentId;
-	}
 	public void setDate(String date)
 	{
 		this.date = date;
@@ -28,10 +21,6 @@ public class Appointment
 	}
 	
 	//getter
-    public String getAppointmentId() 
-    { 
-    	return appointmentId; 
-    }
     public String getDate()
     {
     	return date;
@@ -43,6 +32,6 @@ public class Appointment
 
     public String toString() 
     {
-        return "\nAppointment ID : " + appointmentId + "\nDate : " + date + "\nTime : " + time;
+        return "\nDate : " + date + "\nTime : " + time;
     }
 }
