@@ -6,8 +6,7 @@ public class Patient extends Person
     private MedicalRecord medRec; 
     private Appointment App;    
 
-    public Patient(String nric, String name, String phoneNumber, String patientID, MedicalRecord medRec, Appointment App) 
-    {
+    public Patient(String nric, String name, String phoneNumber, String patientID, MedicalRecord medRec, Appointment App) {
         super(nric, name, phoneNumber); 
         this.patientID = patientID;
         this.medRec = medRec;

@@ -8,6 +8,9 @@ import com.smartcare.util.LinkedList;
 import com.smartcare.util.Queue;
 
 public class Main {
+	/** Main Program
+	 * @author Zufar
+	 */
 	public static void main(String[] args) {
 		PatientFileHandler patientFileHandler = new PatientFileHandler("patients.txt");
 		LinkedList patientList = patientFileHandler.parseRecord();
@@ -25,7 +28,7 @@ public class Main {
 
 		boolean logout = false;
 
-		while (!logout) {
+		while (!logout && loggedInPerson != null) {
 			if (loggedInPerson instanceof Patient) {
 				Patient patient = (Patient) loggedInPerson;
 
@@ -39,16 +42,26 @@ public class Main {
 				} else {
 					logout = true;
 				}
-			} else {
-
+			} else if (loggedInPerson instanceof Staff) {
+				// TODO: 1. Check Patient Medical Record (seaarch htrhough medical record)
+					// TODO: 1.1 Insert Patient ID
+					// TODO: 1.2 View
+				// TODO: 2. Check previous Appointment that happened 
+				// TODO: 3. Manage New Apppointment
+				// TODO: 3.1 Check New Apppointment
+				// TODO: 3.2 Edit New Apppointment
+				// TODO: 3.2.1 Edit Assigned doctor (Update)
+				// TODO: 3.3 Delete New Apppointment (Deceased/MIA)
 			}
 		}
-
 
 		patientFileHandler.saveRecord(patientList);
 		staffFileHandler.saveRecord(staffList);
 	}
 
+	/** Menu for Login
+	 * @author Zufar
+	 */
 	public static Person login(LinkedList patientList, LinkedList staffList) {
 		boolean exit = false;
 		boolean patientLogin = false;
@@ -56,7 +69,7 @@ public class Main {
 
 		while (!exit) {
 			String nric = JOptionPane.showInputDialog("Enter your NRIC");
-			if (nric == null) {
+			if (nric == null || nric.isEmpty()) {
 				return null;
 			}
 
@@ -87,6 +100,25 @@ public class Main {
 					s = (Staff) staffList.getNext();
 				}
 			}
+
+			if (!patientLogin && !staffLogin) {
+				/*TODO: insert new patient
+				 nric
+				 name
+				 phone number
+				 !!!!buang patient id
+				 
+				 // Bawah Doctor
+				 medical reccord (penyakit)
+					careType = hospital faculty
+					details =  condition
+					medicalFee
+					isCritical
+				 Appointment
+				 	Date
+					Time
+				 */
+			}
 		}
 
 		return null;
@@ -97,13 +129,6 @@ public class Main {
 	}
 
 	public static void bookAppointment(Queue appointmentQueue, Patient patient) {
-		/* TODO: Tarikh
-		*	sakit
-		*/
-
-		String year = JOptionPane.showInputDialog("Enter your appointment date (YYYY-MM-DD)");
-		String sickness = JOptionPane.showInputDialog("Enter your sickness");
-
-		appointmentQueue.enqueue(new Appointment(year, sickness));
+		//TODO: 4.0 Add appointment
 	}
 }

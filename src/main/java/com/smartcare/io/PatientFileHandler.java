@@ -33,8 +33,8 @@ public class PatientFileHandler {
                 String details = tokens.nextToken();
                 double medicalFee = Double.parseDouble(tokens.nextToken());
                 boolean isCritical = Boolean.parseBoolean(tokens.nextToken());
-                String date = tokens.nextToken();; 
-                String time = tokens.nextToken();; 
+                String date = tokens.nextToken();
+                String time = tokens.nextToken();
 
                 MedicalRecord medRec = new MedicalRecord(careType, details, medicalFee, isCritical); 
                 Appointment App = new Appointment(date, time);    
