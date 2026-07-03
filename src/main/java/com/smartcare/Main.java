@@ -29,6 +29,8 @@ public class Main {
 		boolean logout = false;
 
 		while (!logout && loggedInPerson != null) {
+
+			// Paitent Menu
 			if (loggedInPerson instanceof Patient) {
 				Patient patient = (Patient) loggedInPerson;
 
@@ -36,21 +38,20 @@ public class Main {
 				int chosenOption = JOptionPane.showOptionDialog(null, "Please choose your option", "Patient Menu", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
 				if (chosenOption == 0) {
-					medicalRecord(patient);
+					JOptionPane.showMessageDialog(null, patient.toString());
 				} else if (chosenOption == 1) {
 					bookAppointment(appointmentQueue, patient);
 				} else {
 					logout = true;
 				}
+			// Staff Menu after Login
 			} else if (loggedInPerson instanceof Staff) {
-				// TODO: 1. Check Patient Medical Record (seaarch htrhough medical record)
-					// TODO: 1.1 Insert Patient ID
-					// TODO: 1.2 View
-				// TODO: 2. Check previous Appointment that happened 
-				// TODO: 3. Manage New Apppointment
-				// TODO: 3.1 Check New Apppointment
-				// TODO: 3.2 Edit New Apppointment
-				// TODO: 3.2.1 Edit Assigned doctor (Update)
+				// TODO: 1.0 Search Patient Medical Record (based on ic)
+				// TODO: 2.0 Search previous Appointment that happened 
+				// TODO: 3.0 Manage New Apppointment
+				// TODO: 3.1 Traverse New Apppointment
+				// TODO: 3.2 Update New Apppointment
+				// TODO: 3.2.1 Update Assigned doctor
 				// TODO: 3.3 Delete New Apppointment (Deceased/MIA)
 			}
 		}
@@ -102,20 +103,19 @@ public class Main {
 			}
 
 			if (!patientLogin && !staffLogin) {
-				/*TODO: insert new patient
+				/*TODO: 4.0 Add new patient(
 				 nric
 				 name
 				 phone number
 				 !!!!buang patient id
 				 
-				 // Bawah Doctor
 				 medical reccord (penyakit)
-					careType = hospital faculty
-					details =  condition
-					medicalFee
-					isCritical
-				 Appointment
-				 	Date
+					careType = hospital faculty (patient)
+					details =  condition        (patient)
+					medicalFee // Doctor
+					isCritical patient
+				 Appointment patient
+				 	Date patient
 					Time
 				 */
 			}
@@ -124,11 +124,8 @@ public class Main {
 		return null;
 	}
 
-	public static void medicalRecord(Patient patient) {
-		JOptionPane.showMessageDialog(null, patient.toString());
-	}
-
+	// For Patient
 	public static void bookAppointment(Queue appointmentQueue, Patient patient) {
-		//TODO: 4.0 Add appointment
+		// TODO: Implement bookAppointment
 	}
 }

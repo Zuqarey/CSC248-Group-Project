@@ -33,3 +33,4 @@
 770717546671,William Tan Kian Seng,0194455667,P1033,Dental Clinic,Wisdom Tooth Extraction,420.0,false,2026-06-28,08:30 AM
 910303575584,Meera Jasmine,0116655443,P1034,General Clinic,Chronic Migraine Injection,65.0,false,2026-06-28,03:45 PM
 170525585595,Zaleha binti Mansor,0132233114,P1035,Emergency,Dangerous Hypertensive Crisis,300.0,true,2026-06-29,10:00 AM
+// kalau patient input new file...staff kena edit untuk medical fee sahaja kena guna func set. kalau staff x edit medical price = 0
