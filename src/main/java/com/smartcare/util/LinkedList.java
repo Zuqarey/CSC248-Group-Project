@@ -1,4 +1,5 @@
-package src.main.java.com.smartcare;
+package com.smartcare.util;
+
 public class LinkedList
 {
     private Node first;

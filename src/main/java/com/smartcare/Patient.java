@@ -1,3 +1,4 @@
+package com.smartcare;
 
 public class Patient extends Person 
 {
@@ -44,5 +45,13 @@ public class Patient extends Person
     public String toString() 
     {
         return super.toString() + "Patient ID : " + patientID + medRec.toString() + "\n" + App.toString();
+    }
+
+    public boolean login(String nric) {
+        if (nric.equals(this.nric)) {
+            return true;
+        } else {
+		return false;
+	}
     }
 }

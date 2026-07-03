@@ -1,3 +1,4 @@
+package com.smartcare;
 
 public abstract class Person 
 {

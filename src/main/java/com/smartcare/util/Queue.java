@@ -1,4 +1,4 @@
-package src.main.java.com.smartcare;
+package com.smartcare.util;
 public class Queue
 {
 	private LinkedList list;

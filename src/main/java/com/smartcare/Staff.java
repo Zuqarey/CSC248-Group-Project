@@ -1,3 +1,4 @@
+package com.smartcare;
 
 public class Staff extends Person 
 {
