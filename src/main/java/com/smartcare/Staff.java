@@ -43,8 +43,7 @@ public class Staff extends Person
     }
 
     // benda ni akan semak password dengan id (kalau id atau pass salah auto dua dua salah)
-    public boolean login(int id, String pass) 
-    {
+    public boolean login(int id, String pass) {
         return (this.staffID == id && this.password.equals(pass));
     }
 
