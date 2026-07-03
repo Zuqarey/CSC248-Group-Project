@@ -1,4 +1,4 @@
-package src.main.java.com.smartcare;
+
 public class Patient extends Person 
 {
     private String patientID;

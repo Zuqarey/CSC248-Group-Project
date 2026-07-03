@@ -1,4 +1,4 @@
-package src.main.java.com.smartcare;
+
 public class MedicalRecord 
 {
     private String careType;  

@@ -1,4 +1,5 @@
-package src.main.java.com.smartcare.io;
+package com.smartcare.io;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;

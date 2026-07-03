@@ -1,4 +1,5 @@
-package com.smartcare;
+package com.smartcare.io;
+
 import java.io.*;
 
 public class SmartCare {
