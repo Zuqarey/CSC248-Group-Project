@@ -107,7 +107,7 @@ public class Main {
 				 nric
 				 name
 				 phone number
-				 TODO 0.1 :buang patient id
+				 TODO 0.1 :buang patient id []
 				 
 				 medical reccord (penyakit)
 					careType = hospital faculty (patient)
@@ -127,5 +127,13 @@ public class Main {
 	// For Patient
 	public static void bookAppointment(Queue appointmentQueue, Patient patient) {
 		// TODO: Implement bookAppointment
+		Queue tempQueue = new Queue();
+		 for (int i = 0; i < 5; i++) {
+			String date = JOptionPane.showInputDialog("Enter appointment date (YYYY-MM-DD):");
+			String time = JOptionPane.showInputDialog("Enter appointment time (HH:MM (P/M)):");
+
+			Appointment appointment = new Appointment(date, time);
+			patient.setAppointment(appointment);
+		 }
 	}
 }
