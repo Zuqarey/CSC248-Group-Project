@@ -50,7 +50,68 @@ public class Main {
 				// TODO: 2.0 Search previous Appointment that happened 
 				// TODO: 3.0 Manage New Apppointment
 				// TODO: 3.1 Traverse New Apppointment
-				// TODO: 3.2 Update New Apppointment
+
+				// TODO: 3.1 Traverse New Apppointment - done by Fareed
+				System.out.println("\n--- Patient Registry & Appointments Traversal ---");
+
+				if (patientMasterList.isEmpty()) {
+					System.out.println("The registry is currently empty. No appointments found.");
+				} else {
+					int recordCount = 1;
+
+					for (Object currentObj = patientMasterList.getFirst(); currentObj != null; currentObj = patientMasterList.getNext()) {
+						
+						Patient currentPatient = (Patient) currentObj;
+
+						System.out.println("\n[Record " + recordCount + "]");
+						System.out.println(currentPatient.toString());
+						System.out.println("--------------------------------------------------");
+
+						recordCount++;
+					}
+					
+					System.out.println("End of registry traversal. Total records found: " + (recordCount - 1));
+				}
+
+				// TODO: 3.2 Update New Apppointment - done by Fareed
+				System.out.println("\n--- Update Existing Appointment ---");
+				System.out.print("Enter the Patient ID to update (e.g., P1001): ");
+				String searchId = scan.nextLine();
+
+				boolean isFound = false;
+
+				for (Object currentObj = patientMasterList.getFirst(); currentObj != null; currentObj = patientMasterList.getNext()) {
+					
+					Patient currentPatient = (Patient) currentObj;
+					
+					if (currentPatient.getPatientID().equalsIgnoreCase(searchId)) {
+						isFound = true;
+						System.out.println("\nPatient found: " + currentPatient.getName());
+						System.out.println("Current Appointment Details: " + currentPatient.getAppointment().toString());
+						
+						System.out.print("Enter New Appointment Date (YYYY-MM-DD) or press Enter to keep current: ");
+						String newDate = scan.nextLine();
+						if (!newDate.trim().isEmpty()) {
+							currentPatient.getAppointment().setDate(newDate);
+						}
+						
+						System.out.print("Enter New Appointment Time (HH:MM AM/PM) or press Enter to keep current: ");
+						String newTime = scan.nextLine();
+						if (!newTime.trim().isEmpty()) {
+							currentPatient.getAppointment().setTime(newTime);
+						}
+						
+						System.out.println("\nAppointment successfully updated!");
+						System.out.println("Updated Info: " + currentPatient.getAppointment().toString());
+						
+						break; 
+					}
+				}
+
+				if (!isFound) {
+					System.out.println("Error: Patient ID '" + searchId + "' not found in the active registry.");
+				}
+
 				// TODO: 3.2.1 Update Assigned doctor
 				// TODO: 3.3 Delete New Apppointment (Deceased/MIA)
 			}
