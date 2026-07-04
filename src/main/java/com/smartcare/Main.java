@@ -95,7 +95,7 @@ public class Main {
 				while (s != null) {
 					if (s.login(id, password)) {
 						staffLogin = true;
-						JOptionPane.showMessageDialog(null, "Welcome Dr.");
+						JOptionPane.showMessageDialog(null, "Welcome "+s.getName());
 						return s;
 					}
 					s = (Staff) staffList.getNext();
@@ -107,7 +107,7 @@ public class Main {
 				 nric
 				 name
 				 phone number
-				 !!!!buang patient id
+				 TODO 0.1 :buang patient id
 				 
 				 medical reccord (penyakit)
 					careType = hospital faculty (patient)

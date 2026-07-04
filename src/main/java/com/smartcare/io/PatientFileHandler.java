@@ -28,7 +28,6 @@ public class PatientFileHandler {
                 String nric = tokens.nextToken();
                 String name = tokens.nextToken();
                 String phoneNumber = tokens.nextToken();
-                String patientID = tokens.nextToken();
                 String careType = tokens.nextToken();
                 String details = tokens.nextToken();
                 double medicalFee = Double.parseDouble(tokens.nextToken());
@@ -38,7 +37,7 @@ public class PatientFileHandler {
 
                 MedicalRecord medRec = new MedicalRecord(careType, details, medicalFee, isCritical); 
                 Appointment App = new Appointment(date, time);    
-                Patient patient = new Patient(nric, name, phoneNumber, patientID, medRec, App);
+                Patient patient = new Patient(nric, name, phoneNumber, medRec, App);
 
                 patientLL.insertAtBack(patient);
             }
@@ -65,7 +64,6 @@ public class PatientFileHandler {
                 outputFile.println(obj.getNRIC() + "," + 
                     obj.getName() + "," +
                     obj.getPhoneNumber() + "," + 
-                    obj.getPatientID() + "," +
                     obj.getMedicalRecord().getCareType() + "," + 
                     obj.getMedicalRecord().getDetails() + "," +
                     obj.getMedicalRecord().getMedicalFee() + "," + 
