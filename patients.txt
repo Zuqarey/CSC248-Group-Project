@@ -7,7 +7,7 @@
 030518036677,Nur Fatima binti Mohd Noor,0139988776,Dental Clinic,Minor Tooth Extraction Surgery,280.0,false,2026-06-13,03:30 PM
 810925129981,John Doe Anak Nyambong,0145551234,General Clinic,Abdominal Pain and Poisoning,60.0,false,2026-06-14,10:00 AM
 991231054433,Muhammad Ridzuan,0182233445,Specialist Clinic,Spinal Physiotherapy Treatment,120.0,false,2026-06-14,02:00 PM
-900707021122,Tan Bee Lian,0129871122,,Emergency,Chronic Asthma Stage 3,250.0,true,2026-06-15,01:45 AM
+900707021122,Tan Bee Lian,0129871122,Emergency,Chronic Asthma Stage 3,250.0,true,2026-06-15,01:45 AM
 850315067788,Abdul Rahman bin Isa,0176655443,General Clinic,Hypertension Management,70.0,false,2026-06-15,11:00 AM
 961022073344,Lim Xiu Ying,0167788990,Dental Clinic,Teeth Scaling and Gum Treatment,90.0,false,2026-06-16,09:30 AM
 930809095566,Ramasamy Suppiah,0116655778,Specialist Clinic,Diabetes Insulin Injection,65.0,false,2026-06-16,04:00 PM
@@ -33,4 +33,3 @@
 770717546671,William Tan Kian Seng,0194455667,Dental Clinic,Wisdom Tooth Extraction,420.0,false,2026-06-28,08:30 AM
 910303575584,Meera Jasmine,0116655443,General Clinic,Chronic Migraine Injection,65.0,false,2026-06-28,03:45 PM
 170525585595,Zaleha binti Mansor,0132233114,Emergency,Dangerous Hypertensive Crisis,300.0,true,2026-06-29,10:00 AM
-// kalau patient input new file...staff kena edit untuk medical fee sahaja kena guna func set. kalau staff x edit medical price = 0
