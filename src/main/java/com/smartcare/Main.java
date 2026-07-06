@@ -90,6 +90,8 @@ public class Main {
 		boolean staffLogin = false;
 
 		while (!exit) {
+			// Ask person if he/she is new patient if no then proceed with patien login and staff login.
+
 			String nric = JOptionPane.showInputDialog("Enter your NRIC");
 			if (nric == null || nric.isEmpty()) {
 				return null;
@@ -237,6 +239,7 @@ public class Main {
 	public static void viewAppointmentRecord(LinkedList patientList){
 		Patient patient = (Patient) patientList.getFirst();// casting to patient so that we can get 
 		Appointment appointment = patient.getAppointment();// casting to get the appointment from patient
+		
 	}
 
 	//Methode Untuk remove patient dari linked list
