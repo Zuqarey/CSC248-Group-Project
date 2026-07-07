@@ -90,11 +90,11 @@ public abstract class Person
         
         if (lastDigit % 2 == 0) 
         {
-            return "Female";
+            return "Male";
         } 
         else 
         {
-            return "Male";
+            return "Female";
         }
     }
 	
