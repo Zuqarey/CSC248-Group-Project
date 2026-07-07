@@ -128,4 +128,50 @@ public class LinkedList
             return current.data;
         }
     }
+
+    public boolean remove(Object removeItem) {
+        // Case 1: The list is empty, nothing to remove
+        if (isEmpty() || removeItem == null) {
+            return false;
+        }
+
+        // Case 2: The item is at the very front of the list
+        if (first.data.equals(removeItem)) {
+            removeFromFront(); // Reuse your working method
+            return true;
+        }
+
+        // Case 3: The item is somewhere in the middle or at the back
+        Node previous = first;
+        Node searchNode = first.next;
+
+        // Traverse the list to look for a match
+        while (searchNode != null) {
+            if (searchNode.data.equals(removeItem)) {
+                
+                // If it is the last node, update the 'last' pointer to the previous node
+                if (searchNode == last) {
+                    last = previous;
+                    last.next = null;
+                } else {
+                    // It's in the middle: bypass 'searchNode' by connecting previous directly to next
+                    previous.next = searchNode.next;
+                }
+                
+                // Safety reset: if the internal iterator ('current') was pointing to the deleted node,
+                // reset it so getNext() doesn't break later.
+                if (current == searchNode) {
+                    current = previous;
+                }
+                
+                return true; // Successfully found and removed
+            }
+            
+            // Move pointers forward
+            previous = searchNode;
+            searchNode = searchNode.next;
+        }
+
+        return false; // Item wasn't found in the list
+    }
 }
