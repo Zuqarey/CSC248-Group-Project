@@ -62,7 +62,7 @@ public class Main {
 					bookAppointment(appointmentQueue);
 				} else if (chosenOption == 3) {
 					// TODO: 2 Update New Apppointment Staff to update appointment record as a staff
-					changeAppointment(patientList);
+					updateMedicalRecord(patientList);
 				} else if (chosenOption == 4) {
 					// TODO: 3 Delete Apppointment (if Deceased/MIA)
 					RemovePatient(patientList);
@@ -250,6 +250,10 @@ public class Main {
 
 	//Menthode untuk staff tengok patient yang first time buat appointment
 	public static void viewNewPatient(LinkedList patientList) {
+	}
+
+	public static void updateMedicalRecord( LinkedList patientList){
+
 	}
 		
 }
