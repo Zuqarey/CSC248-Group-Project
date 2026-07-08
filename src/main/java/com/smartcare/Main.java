@@ -47,7 +47,7 @@ public class Main {
 					bookAppointment(appointmentQueue, patient);
 				} else if (chosenOption == 2) {
 					// done by fareed
-						changeAppointment(patientList);
+						changeAppointment(patient);
 				} else{
 					logout = true;
 				}
@@ -386,81 +386,212 @@ public class Main {
 		}
 	}
 
-	public static void SearchPatient(LinkedList patientList) {
-		String searchId = "something";
-		boolean isFound = false;
-		while(true) {
-			for (Object currentObj = patientList.getFirst(); currentObj != null || isFound; currentObj = patientList.getNext()) {
-				searchId = JOptionPane.showInputDialog("Enter the Patient NRIC to search (e.g., 999999999999):");
+public static void SearchPatient(LinkedList patientList) {
+        String searchId = "something";
+        boolean isFound = false;
+        while (!isFound) {
+            searchId = JOptionPane.showInputDialog("Enter the Patient NRIC to search (e.g., 999999999999):");
 
-				if (searchId == null || searchId.isEmpty()) {
-					return;
-				}
+            if (searchId == null || searchId.isEmpty()) {
+                return;
+            }
 
-				Patient currentPatient = (Patient) currentObj;
+            for (Object currentObj = patientList.getFirst(); currentObj != null; currentObj = patientList.getNext()) {
+                Patient currentPatient = (Patient) currentObj;
 
-				if (currentPatient.getNRIC().equalsIgnoreCase(searchId)) {
-					isFound = true;
-					JOptionPane.showMessageDialog(null, "Patient found: " + currentPatient.toString()); 
-				} else {
-					JOptionPane.showMessageDialog(null, "Error: Patient ID '" + searchId + "' not found in the active registry.");
-				}
-			}
+                if (currentPatient.getNRIC().equalsIgnoreCase(searchId)) {
+                    isFound = true;
+                    JOptionPane.showMessageDialog(null, "Patient found: " + currentPatient.toString());
+                    return; 
+                }
+            }
+            
+            if (!isFound) {
+                JOptionPane.showMessageDialog(null, "Error: Patient ID '" + searchId + "' not found in the active registry.");
+            }
+        }
+    }
+
+	public static void changeAppointment(Patient patient) {
+			if (patient == null) {
+			return;
 		}
-	}
-
-	public static void changeAppointment(LinkedList patientList) {
-		
-
-		for (Object currentObj = patientList.getFirst(); currentObj != null; currentObj = patientList.getNext()) {
-			Patient currentPatient = (Patient) currentObj;
-
-				JOptionPane.showMessageDialog(null, "Patient Name: " + currentPatient.getName() + "\nCurrent Appointment Details: " + currentPatient.getAppointment().toString());
-
-				String newDate = JOptionPane.showInputDialog("Enter New Appointment Date (YYYY-MM-DD) or press Enter to keep current:");
-				
-				if(newDate == null){
-					return;
-				}
-				if (!newDate.trim().isEmpty()) {
-					currentPatient.getAppointment().setDate(newDate);
-				}
-
-				String newTime = JOptionPane.showInputDialog("Enter New Appointment Time (HH:MM AM/PM) or press Enter to keep current:");
-				
-				if(newTime == null){
-					return;
-				}
-				if (!newTime.trim().isEmpty()) {
-					currentPatient.getAppointment().setTime(newTime);
-				}
-
-				JOptionPane.showMessageDialog(null, "Appointment successfully updated!\nUpdated Info: " + currentPatient.getAppointment().toString());
-				break; 
-			
+		if (patient.getAppointment() == null) {
+			JOptionPane.showMessageDialog(null, "No appointment found for " + patient.getName() + ".");
+			return;
 		}
 
-	}
+		JOptionPane.showMessageDialog(null, "Patient Name: " + patient.getName() + "\nCurrent Appointment Details: " + patient.getAppointment().toString());
+		String newDate = JOptionPane.showInputDialog("Enter New Appointment Date (YYYY-MM-DD) or press Enter to keep current:");
+		if (newDate == null) {
+			return;
+		}
+		if (!newDate.trim().isEmpty()) {
+			patient.getAppointment().setDate(newDate);
+		}
 
-	// method to untuk tengok appointment record
-	public static void viewAppointmentRecord(LinkedList patientList){
-		Patient patient = (Patient) patientList.getFirst();// casting to patient so that we can get 
-		Appointment appointment = patient.getAppointment();// casting to get the appointment from patient
-		
+		String newTime = JOptionPane.showInputDialog("Enter New Appointment Time (HH:MM AM/PM) or press Enter to keep current:");
+		if (newTime == null) {
+			return;
+		}
+		if (!newTime.trim().isEmpty()) {
+			patient.getAppointment().setTime(newTime);
+		}
+
+		JOptionPane.showMessageDialog(null, "Appointment successfully updated!\nUpdated Info: " + patient.getAppointment().toString());
 	}
+		// method to untuk tengok appointment record
+		// Method to view a patient's appointment record
+    public static void viewAppointmentRecord(LinkedList patientList) {
+        	String searchId = JOptionPane.showInputDialog("Enter Patient NRIC to view appointment record:");
+        		if (searchId == null || searchId.trim().isEmpty()) {
+            	return;
+       	 	}
+
+        	boolean found = false;
+        	Object currentObj = patientList.getFirst(); // Initialize pointer
+
+        	while (currentObj != null) {
+            	Patient patient = (Patient) currentObj;
+           		if (patient.getNRIC().equalsIgnoreCase(searchId.trim())) {
+                	found = true;
+                	if (patient.getAppointment() != null) {
+                   		JOptionPane.showMessageDialog(null, 
+                        "Patient Name: " + patient.getName() + 
+                        "\nAppointment Details: " + patient.getAppointment().toString(),
+                        "Appointment Record", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "This patient has no active appointments scheduled.");
+                }
+                break; // Exit the loop early since we found the match
+            }
+            currentObj = patientList.getNext(); // Move to next node
+        }
+
+        if (!found) {
+            JOptionPane.showMessageDialog(null, "Patient with NRIC '" + searchId + "' not found.");
+        }
+    }
 
 	//Methode Untuk remove patient dari linked list
-	public static void RemovePatient(LinkedList PatientList) {
+	// Method to remove a patient from the linked list (Deceased/MIA)
+    public static void RemovePatient(LinkedList patientList) {
+        String searchId = JOptionPane.showInputDialog("Enter Patient NRIC to REMOVE from registry:");
+        if (searchId == null || searchId.trim().isEmpty()) {
+            return;
+        }
+
+        boolean found = false;
+        Object currentObj = patientList.getFirst(); // Initialize pointer
+
+        while (currentObj != null) {
+            Patient patient = (Patient) currentObj;
+            if (patient.getNRIC().equalsIgnoreCase(searchId.trim())) {
+                found = true;
+                
+                int confirm = JOptionPane.showConfirmDialog(null, 
+                    "Are you sure you want to permanently delete " + patient.getName() + " (NRIC: " + patient.getNRIC() + ")?",
+                    "Confirm Deletion", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                
+                if (confirm == JOptionPane.YES_OPTION) {
+                    patientList.remove(patient); 
+                    JOptionPane.showMessageDialog(null, "Patient records successfully purged.");
+                }
+                break; 
+            }
+            currentObj = patientList.getNext(); // Move to next node
+        }
+
+        if (!found) {
+            JOptionPane.showMessageDialog(null, "Patient record not found.");
+        }
+    }
 		// sebab mati atau MIA
 
-	}
+	
 
 	//Menthode untuk staff tengok patient yang first time buat appointment
-	public static void viewNewPatient(LinkedList patientList) {
-	}
+	// Method for staff to view patients who are visiting for the first time
+    public static void viewNewPatient(LinkedList patientList) {
+        PatientFileHandler newPatientFileHandler = new PatientFileHandler("QueueNewPatient.txt");
+        LinkedList newPatients = newPatientFileHandler.parseRecord();
 
-	public static void updateMedicalRecord( LinkedList patientList){
+        if (newPatients == null || newPatients.getFirst() == null) {
+            JOptionPane.showMessageDialog(null, "There are no new pending first-time patients in the registration queue.");
+            return;
+        }
 
-	}
+        StringBuilder output = new StringBuilder("--- New First-Time Patients ---\n\n");
+        int count = 1;
+        Object currentObj = newPatients.getFirst(); // Initialize pointer
+        
+        while (currentObj != null) {
+            Patient patient = (Patient) currentObj;
+            output.append(count).append(". Name: ").append(patient.getName())
+                  .append("\n    NRIC: ").append(patient.getNRIC())
+                  .append("\n    Phone: ").append(patient.getPhoneNumber())
+                  .append("\n    Faculty: ").append(patient.getMedicalRecord().getCareType())
+                  .append("\n-----------------------------------\n");
+            count++;
+            currentObj = newPatients.getNext(); // Move to next node
+        }
+
+        JOptionPane.showMessageDialog(null, output.toString(), "New Registered Patients Registry", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+		// Method to update critical state, condition details, and outstanding medical fees
+    	public static void updateMedicalRecord(LinkedList patientList) {
+        	String searchId = JOptionPane.showInputDialog("Enter Patient NRIC to update medical record:");
+        		if (searchId == null || searchId.trim().isEmpty()) {
+           		 return;
+        		}
+
+        	boolean found = false;
+        	Object currentObj = patientList.getFirst(); // Initialize pointer
+
+        	while (currentObj != null) {
+           		Patient patient = (Patient) currentObj;
+            		if (patient.getNRIC().equalsIgnoreCase(searchId.trim())) {
+                		found = true;
+                		MedicalRecord record = patient.getMedicalRecord();
+
+                	if (record == null) {
+                    JOptionPane.showMessageDialog(null, "Error: No medical record found attached to this patient profile.");
+                    return;
+                	}
+
+                // 1. Update Details
+                String currentDetails = record.getDetails();
+                String newDetails = JOptionPane.showInputDialog("Current Details: " + currentDetails + "\nEnter New Condition Details (or press Enter to keep):");
+                if (newDetails != null && !newDetails.trim().isEmpty()) {
+                    record.setDetails(newDetails.trim());
+                }
+                // 2. Update Critical Status
+                int criticalChoice = JOptionPane.showConfirmDialog(null,  "Is this condition currently critical? (Current: " + (record.getIsCritical() ? "Yes" : "No") + ")","Update Severity", JOptionPane.YES_NO_OPTION);
+                if (criticalChoice != JOptionPane.CLOSED_OPTION) {
+                    record.setIsCritical(criticalChoice == JOptionPane.YES_OPTION);
+                }
+                // 3. Update Medical Fee
+                String currentFeeStr = String.valueOf(record.getMedicalFee());
+                String newFeeStr = JOptionPane.showInputDialog("Current Balance Due: $" + currentFeeStr + "\nEnter New Medical Fee Amount:");
+                if (newFeeStr != null && !newFeeStr.trim().isEmpty()) {
+                    try {
+                        double newFee = Double.parseDouble(newFeeStr.trim());
+                        record.setMedicalFee(newFee);
+                    } catch (NumberFormatException e) {
+                        JOptionPane.showMessageDialog(null, "Invalid currency input formatting. Fee update omitted.", "Input Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+
+                JOptionPane.showMessageDialog(null, "Medical profile changes saved successfully for " + patient.getName());
+                break;
+            }
+            currentObj = patientList.getNext(); // Move to next node
+        }
+
+        if (!found) {
+            JOptionPane.showMessageDialog(null, "Patient record not found.");
+        }
+    }
 		
 }
